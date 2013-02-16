@@ -5,10 +5,10 @@ require 'json'
 class Draugiem
 
   API_URL = 'http://api.draugiem.lv/json/'
-  attr_accessor :app_id, :app_key, :user_key
+  attr_accessor :app_key, :user_key
 
-  def initialize app_id, app_key, user_key = nil
-    @app_id, @app_key, @user_key = app_id, app_key, user_key
+  def initialize app_key, user_key = nil
+    @app_key, @user_key = app_key, user_key
   end
 
   def send(params = {})
