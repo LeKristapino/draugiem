@@ -23,6 +23,11 @@ describe Draugiem do
     @draugiem.add_activity('test').should == {"status"=>"OK"}
   end
 
+  it "should return app_friends" do
+    @draugiem.app_friends(1, 20, false)['users'].should == []
+    @draugiem.app_friends(1, 20, true)['total'].should  == 0
+  end
+
   it "should post activity with link on page" do
     @draugiem.add_activity('test', nil, nil, {page_id: 123}).should == {"status"=>"OK"}
   end

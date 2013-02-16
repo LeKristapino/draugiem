@@ -28,6 +28,10 @@ class Draugiem
     send action: 'userdata'
   end
 
+  def app_friends page = 1, limit = 20, return_ids = false
+    send action: 'app_friends', page: page, limit: limit, show: return_ids ? 'ids' : nil
+  end
+
   def add_activity text, prefix = nil, link = nil, params = {}
     send({action: 'add_activity', text: text, prefix: prefix, link: link}.merge(params))
   end
