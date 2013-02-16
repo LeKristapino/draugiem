@@ -15,9 +15,7 @@ class Draugiem
     params[:app]    = app_key
     params[:apikey] = user_key
 
-    response = JSON.parse(Net::HTTP.post_form(URI.parse(API_URL), params).body)
-    raise ServerError.new self, params, response['error'] if response['error']
-    response
+    JSON.parse(Net::HTTP.post_form(URI.parse(API_URL), params).body)
   end
 
   def authorize auth_code
@@ -38,16 +36,6 @@ class Draugiem
 
   def add_activity text, prefix = nil, link = nil, params = {}
     send({action: 'add_activity', text: text, prefix: prefix, link: link}.merge(params))
-  end
-
-  class Error < ::StandardError; end
-
-  class ServerError < Error
-    attr_accessor :session, :params, :error
-    def initialize(session, params, error)
-      super "Server side error calling Draugiem action: #{session}, #{params}, #{error}"
-      @session, @params, @error = session, params, error
-    end
   end
 
 end
