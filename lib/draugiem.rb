@@ -29,7 +29,7 @@ class Draugiem
   def app_friends page = 1, limit = 20, return_ids = false
     resp = send action: 'app_friends', page: page, limit: limit, show: return_ids ? 'ids' : nil
     if return_ids && resp['userids'].any?
-      resp = {'total' => resp['total'], 'userids' => resp.map{|k, v| k.to_i}}
+      resp = {'total' => resp['total'], 'userids' => resp['userids'].map{|k, v| k.to_i}}
     end
     resp
   end
