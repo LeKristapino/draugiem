@@ -5,15 +5,15 @@ require 'json'
 class Draugiem
 
   API_URL = 'http://api.draugiem.lv/json/'
-  attr_accessor :app_id, :app_secret, :apikey
+  attr_accessor :app_id, :app_key, :user_key
 
-  def initialize app_id, app_secret, apikey = nil
-    @app_id, @app_secret, @apikey = app_id, app_secret, apikey
+  def initialize app_id, app_key, user_key = nil
+    @app_id, @app_key, @user_key = app_id, app_key, user_key
   end
 
   def send(params = {})
-    params[:app]    = app_secret
-    params[:apikey] = apikey
+    params[:app]    = app_key
+    params[:apikey] = user_key
 
     response = JSON.parse(Net::HTTP.post_form(URI.parse(API_URL), params).body)
     raise ServerError.new self, params, response['error'] if response['error']
