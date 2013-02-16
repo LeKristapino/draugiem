@@ -19,4 +19,8 @@ describe Draugiem do
     @draugiem.user_data['uid']     == 162925
   end
 
+  it "should post acctivity" do
+    @draugiem.add_activity('test').should == {"status"=>"OK"}
+  end
+
 end

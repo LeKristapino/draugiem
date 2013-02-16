@@ -28,6 +28,10 @@ class Draugiem
     send({action: 'userdata'})
   end
 
+  def add_activity text, prefix = nil, link = nil
+    send({action: 'add_activity', text: text, prefix: prefix, link: link})
+  end
+
   class Error < ::StandardError; end
 
   class ServerError < Error
