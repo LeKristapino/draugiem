@@ -26,6 +26,7 @@ describe Draugiem do
   it "should return app_friends" do
     @draugiem.app_friends(1, 20, false)['users'].should == []
     @draugiem.app_friends(1, 20, true)['total'].should  == 0
+    @draugiem.app_friends(1, 20, true)['userids'].should  == []
   end
 
   it "should post activity with link on page" do
