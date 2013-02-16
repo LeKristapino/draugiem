@@ -21,11 +21,11 @@ class Draugiem
   end
 
   def authorize auth_code
-    send({action: 'authorize', code: auth_code})
+    send action: 'authorize', code: auth_code
   end
 
   def user_data
-    send({action: 'userdata'})
+    send action: 'userdata'
   end
 
   def add_activity text, prefix = nil, link = nil, params = {}
