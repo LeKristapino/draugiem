@@ -19,8 +19,12 @@ describe Draugiem do
     @draugiem.user_data['uid']     == 162925
   end
 
-  it "should post acctivity" do
+  it "should post activity" do
     @draugiem.add_activity('test').should == {"status"=>"OK"}
+  end
+
+  it "should post activity with link on page" do
+    @draugiem.add_activity('test', nil, nil, {page_id: 123}).should == {"status"=>"OK"}
   end
 
 end

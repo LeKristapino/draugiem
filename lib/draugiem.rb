@@ -28,8 +28,8 @@ class Draugiem
     send({action: 'userdata'})
   end
 
-  def add_activity text, prefix = nil, link = nil
-    send({action: 'add_activity', text: text, prefix: prefix, link: link})
+  def add_activity text, prefix = nil, link = nil, params = {}
+    send({action: 'add_activity', text: text, prefix: prefix, link: link}.merge(params))
   end
 
   class Error < ::StandardError; end
